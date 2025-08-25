@@ -42,7 +42,8 @@ function addGamesToPage(games) {
         // TIP: if your images are not displaying, make sure there is space
         // between the end of the src attribute and the end of the tag ("/>")
         div.innerHTML = `<img src=${games[i].img} class='game-img'> 
-                         <p> Name: ${games[i].name} </p>
+                         <p> ${games[i].name} </p>
+                         <p> ${games[i].description} </p>
                          <p> Backers: ${games[i].backers} </p>`
         // append the game to the games-container
         gamesContainer.appendChild(div);
@@ -147,11 +148,11 @@ const unfunded = GAMES_JSON.reduce( (acc, GAMES_JSON) => {
 }, 0);
 
 // create a string that explains the number of unfunded games using the ternary operator
-const displaystr = `A total of $800,168 has been raised for 11 games. Currently, 7 games remain unfunded. We need your help to fund these games!`
+const displaystr = document.createElement('p')
+displaystr.innerHTML = `A total of $800,168 has been raised for 11 games. Currently, 7 games remain unfunded. We need your help to fund these games!`
 
 // create a new DOM element containing the template string and append it to the description container
-descriptionContainer.innerHTML = `<p> ${displaystr} </p>`
-
+descriptionContainer.appendChild(displaystr)
 /************************************************************************************
  * Challenge 7: Select & display the top 2 games
  * Skills used: spread operator, destructuring, template literals, sort 
